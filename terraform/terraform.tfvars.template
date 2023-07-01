@@ -1,0 +1,4 @@
+region                = "REGION_NAME"
+tenancy_ocid          = "TENANCY_OCID"
+compartment_ocid      = "COMPARTMENT_OCID"
+subscription_email    = "SUBSCRIPTION_EMAIL"

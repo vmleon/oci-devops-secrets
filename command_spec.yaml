@@ -1,0 +1,24 @@
+version: 0.1
+component: command
+timeoutInSeconds: 360
+failImmediatelyOnError: true
+shell: bash
+
+env:
+  vaultVariables:
+    GOOD_SECRET: ${good_secret_id}
+    BAD_SECRET: ${bad_secret_id}
+
+steps:
+  - type: Command
+    name: "GOOD_SECRET"
+    shell: bash
+    timeoutInSeconds: 10
+    command: |
+      echo "$GOOD_SECRET"
+  - type: Command
+    name: "BAD_SECRET"
+    shell: bash
+    timeoutInSeconds: 10
+    command: |
+      echo "$BAD_SECRET"
