@@ -24,34 +24,7 @@ resource "oci_devops_project" "devops_project" {
   compartment_id = var.compartment_ocid
   name           = "devops_project_${random_string.deploy_id.result}"
   notification_config {
-    topic_id = var.devops_ons_topic_ocid
+    topic_id = oci_ons_subscription.devops_ons_subscription.id
   }
   description = "DevOps Project for ${random_string.deploy_id.result}"
 }
-
-# resource "oci_devops_connection" "devops_connection" {
-#   connection_type = "GITHUB_ACCESS_TOKEN"
-#   username        = var.github_user
-#   access_token    = var.github_access_token_secret
-#   project_id      = oci_devops_project.devops_project.id
-#   base_url        = var.github_repo_url
-#   display_name    = "github_connection_${random_string.deploy_id.result}"
-#   description     = "GitHub Connection for ${random_string.deploy_id.result}"
-# }
-
-# resource "oci_devops_repository" "github_mirrored_repository" {
-#   name       = "github_mirrored_repository"
-#   project_id = oci_devops_project.devops_project.id
-
-#   default_branch  = "refs/heads/main"
-#   description     = "GitHub Mirrored Repository"
-#   repository_type = "MIRRORED"
-#   mirror_repository_config {
-#     connector_id   = oci_devops_connection.devops_connection.id
-#     repository_url = var.github_repo_url
-#     trigger_schedule {
-#       schedule_type   = "CUSTOM"
-#       custom_schedule = "FREQ=MINUTELY"
-#     }
-#   }
-# }
