@@ -45,8 +45,8 @@ resource "oci_devops_deploy_artifact" "command_spec_deploy" {
     deploy_artifact_source_type = "INLINE"
     base64encoded_content = templatefile("${path.module}/../command_spec.yaml",
       {
-        good_secret_id : "${var.good_secret_id}",
-        bad_secret_id : "${var.bad_secret_id}"
+        good_secret_id : "${oci_vault_secret.good_secret.id}",
+        bad_secret_id : "${oci_vault_secret.bad_secret.id}"
       }
     )
   }
