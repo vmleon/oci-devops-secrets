@@ -2,15 +2,22 @@
 
 This repository is a minimal complete verifiable issue report.
 
-OCI DevOps fails when reading secrets with special character content.
+OCI DevOps fails when reading OCI Vault secrets with special character content.
 
-It uses Terraform to deploy Vault, Master key and secret. DevOps Project and Deployment Pipeline with a `command_spec.yaml` reading the secret content from the secret OCID.
+This report uses Terraform to deploy **Vault**, **Master key** and two **Secrets**. It also deploys **DevOps Project** and **Deployment Pipeline** with a `command_spec.yaml` that read the secret content from the secret OCID.
 
-This issue is important because the secret could be a User Auth Token, OCI generated with special characters.
+```yaml
+env:
+  vaultVariables:
+    GOOD_SECRET: ${good_secret_id}
+    BAD_SECRET: ${bad_secret_id}
+```
 
-## Run minimal complete verifiable report
+This issue is important because the secret could be an **OCI User Auth Token**, OCI generates Auth Tokens with special characters automatically.
 
-> This has been tested on OCI Cloud Shell.
+## Run report
+
+> These steps have been tested on OCI Cloud Shell.
 
 Copy `terraform.tfvars` template.
 
@@ -36,3 +43,8 @@ Run terraform `apply`.
 terraform apply -auto-approve
 ```
 
+When the deployment is finished, go to **Menu** > **Developer Services** > **OCI DevOps**.
+
+Access the **DevOps project** and click on the **Deployment Pipeline**.
+
+**Manually run the pipeline** and wait for the error.
