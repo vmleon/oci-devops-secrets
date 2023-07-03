@@ -106,7 +106,7 @@ Run the terraform destroy:
 terraform destroy -auto-approve
 ```
 
-Error message `syntax error near unexpected token ('` and ``BAD_SECRET=qwe<rt(y=123'`:
+Error message `syntax error near unexpected token ('` and `BAD_SECRET=qwe<rt(y=123'`:
 ```
 Starting EXECUTING_COMMAND_SPEC_STEPS   
 Executing SPEC_STEP : GOOD_SECRET   
@@ -118,3 +118,5 @@ Step 'GOOD_SECRET' failed with exit code: '2', please check the commands on the 
 Failed executing step : GOOD_SECRET, proceeding to execute the onFailure block.   
 SHELL_EXECUTION Failed.
 ```
+
+![Error message](images/error.png)
