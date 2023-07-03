@@ -13,12 +13,12 @@ env:
     BAD_SECRET: ${bad_secret_id}
 ```
 
-Good Secret content: `abcde123`
-Bad Secret content: `qwe<rt(y=123`
+- Good Secret content: `abcde123`
+- Bad Secret content: `qwe<rt(y=123`
 
 The content can be changed with a terraform variable in `terraform.tfvars`:
-- `good_secret_content`
-- `bad_secret_content`
+- `good_secret_content = "anothervalue"`
+- `bad_secret_content  = "anothervalue"`
 
 This issue is important because the secret could be an **OCI User Auth Token**, and OCI generates Auth Tokens with special characters.
 
@@ -33,7 +33,13 @@ This issue is important because the secret could be an **OCI User Auth Token**, 
 Clone repository:
 
 ```bash
-git clone git@github.com:vmleon/oci-devops-secrets.git
+git clone https://github.com/vmleon/oci-devops-secrets.git
+```
+
+Change to the cloned directory:
+
+```bash
+cd oci-devops-secrets
 ```
 
 Copy `terraform.tfvars` from the template.
@@ -51,6 +57,11 @@ vim terraform/terraform.tfvars
 > 
 > NOTE:
 >
+> List region names:
+> ```bash
+> oci iam region-subscription list --query 'data[]."region-name"'
+> ```
+> 
 > Search for Tenancy OCID:
 > ```bash
 > oci iam compartment list --query 'data[0]."compartment-id"'
@@ -64,6 +75,12 @@ vim terraform/terraform.tfvars
 > ```
 > 
 
+
+Change to the `terraform` directory:
+
+```bash
+cd terraform
+```
 
 Run terraform `init`.
 
