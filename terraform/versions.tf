@@ -5,6 +5,11 @@ terraform {
       version               = "~> 4.121"
       configuration_aliases = [oci.home_region]
     }
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 2"
+      # https://registry.terraform.io/providers/hashicorp/local/
+    }
     random = {
       source  = "hashicorp/random"
       version = "~> 3"
