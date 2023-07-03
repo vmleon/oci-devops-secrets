@@ -13,13 +13,30 @@ env:
     BAD_SECRET: ${bad_secret_id}
 ```
 
-This issue is important because the secret could be an **OCI User Auth Token**, OCI generates Auth Tokens with special characters automatically.
+Good Secret content: `abcde123`
+Bad Secret content: `qwe<rt(y=123`
 
-## Run report
+The content can be changed with a terraform variable in `terraform.tfvars`:
+- `good_secret_content`
+- `bad_secret_content`
 
+This issue is important because the secret could be an **OCI User Auth Token**, and OCI generates Auth Tokens with special characters.
+
+## Run issue
+
+>
+> NOTE:
+> 
 > These steps have been tested on OCI Cloud Shell.
+> 
 
-Copy `terraform.tfvars` template.
+Clone repository:
+
+```bash
+git clone git@github.com:vmleon/oci-devops-secrets.git
+```
+
+Copy `terraform.tfvars` from the template.
 
 ```bash
 cp terraform/terraform.tfvars.template terraform/terraform.tfvars
