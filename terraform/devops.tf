@@ -17,7 +17,7 @@ resource "oci_logging_log" "devops_log" {
     compartment_id = var.compartment_ocid
   }
   is_enabled         = true
-  retention_duration = 10
+  retention_duration = 30
 }
 
 resource "oci_devops_project" "devops_project" {
