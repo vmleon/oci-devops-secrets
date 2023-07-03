@@ -90,21 +90,13 @@ Run terraform `apply`.
 terraform apply -auto-approve
 ```
 
-## The issue error message
+## The issue error message
 
 When the deployment is finished, go to **Menu** > **Developer Services** > **OCI DevOps**.
 
 Access the **DevOps project** and click on the **Deployment Pipeline**.
 
 Click **Run pipeline** and **Start manual run** on the next screen, then wait for the error.
-
-## Clean up
-
-Run the terraform destroy:
-
-```bash
-terraform destroy -auto-approve
-```
 
 Error message `syntax error near unexpected token ('` and `BAD_SECRET=qwe<rt(y=123'`:
 ```
@@ -120,3 +112,11 @@ SHELL_EXECUTION Failed.
 ```
 
 ![Error message](images/error.png)
+
+## Clean up
+
+Run the terraform destroy:
+
+```bash
+terraform destroy -auto-approve
+```
