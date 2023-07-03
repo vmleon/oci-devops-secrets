@@ -33,15 +33,17 @@ vim terraform/terraform.tfvars
 
 > 
 > NOTE:
-> 
-> Search for a Compartment OCID by `COMPARTMENT_NAME`:
-> ```bash
-> oci iam compartment list --all --compartment-id-in-subtree true --query "data[].id" --name "COMPARTMENT_NAME"
-> ```
 >
 > Search for Tenancy OCID:
 > ```bash
 > oci iam compartment list --query 'data[0]."compartment-id"'
+> ```
+> 
+> Search for a Compartment OCID by `COMPARTMENT_NAME`:
+> ```bash
+> oci iam compartment list --all \
+>    --compartment-id-in-subtree true \
+>    --query "data[].id" --name "COMPARTMENT_NAME"
 > ```
 > 
 
